@@ -38,6 +38,10 @@ const invoiceSchema = new mongoose.Schema({
         type: Number,
         required : true
     },
+    terms : {
+        type : String,
+        required : true
+    },
     invoiceDescription : {
         type: String,
         required : true
