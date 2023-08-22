@@ -33,11 +33,10 @@ app.use('/api/createinvoice', require('./routes/create.js'));
 app.use('/api/updateinvoice', require('./routes/update.js'));
 app.use('/api/deleteinvoice', require('./routes/delete.js'));
 
-
-
-// app.get('/hello', (request, response) =>{
-//     response.send('<h1>Hello World</h1>');
-// });
+app.get('/',(request, response)=>{
+    response.sendFile(path.join(
+        __dirname,'dist/invoiceGenerator.html'));
+});
 
 app.listen(3000, ()=>{
     console.log('Listening at localhost:3000');
