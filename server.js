@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { error } = require('console');
 
 //database connection
 mongoose.connect('mongodb+srv://jcordova8681:i4mMOLtVnX-eyBu'+
@@ -13,7 +14,7 @@ mongoose.connect('mongodb+srv://jcordova8681:i4mMOLtVnX-eyBu'+
      useUnifiedTopology: true });
 
 mongoose.connection.on('error', ()=>{
-    console.log('ERROR: ' + error);
+    console.log('ERROR: '+error);
 });
 
 mongoose.connection.on('open', ()=>{
@@ -33,7 +34,7 @@ app.use('/api/createinvoice', require('./routes/create.js'));
 app.use('/api/updateinvoice', require('./routes/update.js'));
 app.use('/api/deleteinvoice', require('./routes/delete.js'));
 
-app.get('/',(request, response)=>{
+app.get('*',(request, response)=>{
     response.sendFile(path.join(
         __dirname,'dist/invoiceGenerator.html'));
 });
